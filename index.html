@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Easy Bike</title>
+
+	<link rel="stylesheet" href="style/style.css">
+
+	<link rel="stylesheet" media="screen and (max-width: 892px)" href="style/resolution-max-892.css" />
+
+	<link href="https://fonts.googleapis.com/css?family=Cantarell&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+		integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+		crossorigin="" />
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+		integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+		crossorigin=""></script>
+
+	<link rel="stylesheet" href="style/MarkerCluster.css">
+	<link rel="stylesheet" href="style/MarkerCluster.Default.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div id="header-top" class="col-12"></div>
+			<div id="easy-bike" class="col-12 text-center">
+				<h1>Easy Bike</h1>
+				<h4>Lyon</h2>
+			</div>
+		</div>
+
+		<section id="slider" class="row text-center">
+			<div id="pictures" class="col-12">
+				<img class="active" src="images/slider/image1.jpg" alt="" />
+				<img src="images/slider/image2.jpg" alt="" />
+				<img src="images/slider/image3.jpg" alt="" />
+			</div>
+			<div id="buttons-slider" class="col-12 row">
+				<button type="button" id="previous" class="col-2 offset-2 text-center btn btn-dark"><i
+						class="fa fa-backward"></i></button>
+				<button type="button" id="play" class="col-3 offset-1 btn text-center btn-dark"><i
+						class="fa fa-play"></i></button>
+				<button type="button" id="pause" class="col-3 offset-1 text-center btn btn-dark"><i
+						class="fa fa-pause"></i></button>
+				<button type="button" id="next" class="col-2 offset-1 text-center btn btn-dark"><i
+						class="fa fa-forward"></i></button>
+			</div>
+		</section>
+
+		<hr color="#373737">
+
+		<section id="map-and-booking" class="row">
+			<div id="map-for-booking" class="col-12 col-lg-7 card border-dark">
+			</div>
+			<div id="booking" class="col-12 col-lg-4 offset-lg-1 card border-dark">
+
+				<h2 id="station-details" class="text-center"></h2>
+				<h3 id=choose-station class="text-center">Veuillez cliquer sur une station</h3>
+				<div class="text-center">
+					<p id="station-name"></p>
+					<p id="station-address"></p>
+					<p id="station-status"></p>
+
+					<div id="station-characteristics">
+						<p id="capacity"></p>
+						<p id="available-seats"></p>
+						<p id="bikes-available"></p>
+					</div>
+				</div>
+
+				<form id="booking-form" name="form">
+					<div id="form-name" class="form-group">
+						<label for="name">Nom :</label>
+						<input id="name" class="form-control form-control" type="name" name="name" required></input>
+					</div>
+					<div id="form-nickname">
+						<label for="nickname" class="label-form">Prénom :</label>
+						<input id="nickname" class="form-control form-control" name="nickname" required></input>
+					</div>
+					<div id="sign">
+						<label for="sign" class="label-form">Signature :</label>
+						<canvas id="sign-in"></canvas>
+					</div>
+					<div class="text-center">
+						<button id="booking-send-button" class="btn btn-dark" type="submit">Réserver</i></button>
+					</div>
+
+
+				</form>
+			</div>
+		</section>
+
+		<section id="booking-summary" class="row text-center card border-dark">
+			<h2 class="col-lg-12 text-center">Réservation en cours :</h2>
+			<p class="col-lg-12">Vélo réservé à <strong id="reserved-station"> </strong> par <strong id="summary-nickname-name"></strong></p>
+			<p class="col-12"><strong>Temps restant : </strong><span id="time-left"></span></p>
+			<button id="cancel-button" class="col-6 col-lg-2 btn btn-dark" type="button">Annuler</button>
+		</section>
+
+
+		<footer class="row">
+			<div id="footer-links" class="col-lg-12 card border-dark text-center">
+				<p><a class="badge badge-outline-dark" href="">Mentions légales</a> - <a
+						class="badge badge-outline- dark" href="">Politique de confidentialité</a></p>
+			</div>
+			<div id="footer-bot"></div>
+		</footer>
+	</div>
+</body>
+
+<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="js/leaflet.markercluster.js"></script>
+<script type="text/javascript" src="js/mere.js"></script>
+<script type="text/javascript" src="js/slider.js"></script>
+<script type="text/javascript" src="js/booking.js"></script>
+<script type="text/javascript" src="js/timer.js"></script>
+<script type="text/javascript" src="js/station.js"></script>
+<script type="text/javascript" src="js/map.js"></script>
+<script type="text/javascript" src="js/canvas.js"></script>
+
+</html>
